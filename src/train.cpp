@@ -7,26 +7,26 @@ Train::~Train() {
   if (first == nullptr) {
     return;
   }
-  Cage* current = first;
+  Car* current = first;
   do {
-    Cage* nextCage = current->next;
+    Car* nextCar = current->next;
     delete current;
-    current = nextCage;
+    current = nextCar;
   } while (current != first);
 }
 
 void Train::addCar(bool light) {
-  Cage* newCage = new Cage{light, nullptr, nullptr};
+  Car* newCar = new Car{light, nullptr, nullptr};
   if (first == nullptr) {
-    first = newCage;
+    first = newCar;
     first->next = first;
     first->prev = first;
   } else {
-    Cage* last = first->prev;
-    last->next = newCage;
-    newCage->prev = last;
-    newCage->next = first;
-    first->prev = newCage;
+    Car* last = first->prev;
+    last->next = newCar;
+    newCar->prev = last;
+    newCar->next = first;
+    first->prev = newCar;
   }
 }
 
@@ -42,7 +42,7 @@ void Train::setStartPosition(int index) {
   if (first == nullptr || index == 0) {
     return;
   }
-  Cage* target = first;
+  Car* target = first;
   for (int i = 0; i < index; ++i) {
     target = target->next;
   }
@@ -57,7 +57,7 @@ int Train::getLength() {
   int length = 0;
   while (true) {
     int steps = 0;
-    Cage* current = first;
+    Car* current = first;
     while (true) {
       current = current->prev;
       countOp++;
