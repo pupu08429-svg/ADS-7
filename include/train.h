@@ -17,7 +17,7 @@ class Train {
   void addCar(bool light); // добавить вагон с начальным состоянием лампочки
   int getLength();          // вычислить длину поезда
   int getOpCount();         // вернуть число переходов (из вагона в вагон)
-  void resetOpCount();   
+  void resetOpCount();
   void setStartPosition(int index);
 };
 #endif  // INCLUDE_TRAIN_H_
