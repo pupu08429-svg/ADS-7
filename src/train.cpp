@@ -4,7 +4,9 @@
 Train::Train() : countOp(0), first(nullptr) {}
 
 Train::~Train() {
-  if (first == nullptr) return;
+  if (first == nullptr) {
+    return;
+  }
   Cage* current = first;
   do {
     Cage* nextCage = current->next;
@@ -12,29 +14,34 @@ Train::~Train() {
     current = nextCage;
   } while (current != first);
 }
+
 void Train::addCar(bool light) {
-  Cage* newCage = new Cage{ light, nullptr, nullptr };
+  Cage* newCage = new Cage{light, nullptr, nullptr};
   if (first == nullptr) {
     first = newCage;
     first->next = first;
     first->prev = first;
-  }
-  else {
+  } else {
     Cage* last = first->prev;
     last->next = newCage;
     newCage->prev = last;
     newCage->next = first;
     first->prev = newCage;
-    }
+  }
 }
+
 void Train::resetOpCount() {
   countOp = 0;
 }
+
 int Train::getOpCount() {
   return countOp;
 }
+
 void Train::setStartPosition(int index) {
-  if (first == nullptr || index == 0) return;
+  if (first == nullptr || index == 0) {
+    return;
+  }
   Cage* target = first;
   for (int i = 0; i < index; ++i) {
     target = target->next;
@@ -43,7 +50,9 @@ void Train::setStartPosition(int index) {
 }
 
 int Train::getLength() {
-  if (first == nullptr) return 0;
+  if (first == nullptr) {
+    return 0;
+  }
   first->light = true;
   int length = 0;
   while (true) {
